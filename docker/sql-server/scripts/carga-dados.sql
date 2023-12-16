@@ -1,3 +1,11 @@
+USE geekjobs
+
+GO
+
+if not exists( select 1 from sys.tables where name = 'Cidade')
+begin
+
+
 /* 
 	CRUD
 	C - CREATE
@@ -8,11 +16,11 @@
 
 USE GEEKJOBS
 
-GO 
+
 
 SET NOCOUNT ON;
 
-GO
+
 
 
 -- D - DELETE
@@ -22,7 +30,7 @@ DELETE Departamento
 DELETE Cidade
 DELETE Estado
 
-GO
+
 
 -- C - CREATE
 
@@ -44,12 +52,12 @@ INSERT INTO Cidade (Nome, Populacao, IdEstado) VALUES ('Cotia', 10000000, @IDEST
 INSERT INTO Departamento (Nome, IdCidade) VALUES ('Centro de Distribuição', @@IDENTITY)
 INSERT INTO Pessoa (Nome, IdDepartamento) VALUES ('Pedro Lucas', @@IDENTITY)
 
-GO
+
 
 
 INSERT INTO Estado (Nome) VALUES ('Ceará')
 
-DECLARE @IDESTADO AS INT
+
 SET @IDESTADO = @@IDENTITY
 
 
@@ -61,11 +69,11 @@ INSERT INTO Cidade (Nome, Populacao, IdEstado) VALUES ('Fortaleza', 2000000, @ID
 INSERT INTO Departamento (Nome, IdCidade) VALUES ('Vendas', @@IDENTITY)
 INSERT INTO Pessoa (Nome, IdDepartamento) VALUES ('Sérgio', @@IDENTITY)
 
-GO
 
-SET NOCOUNT OFF;
 
-GO
+
+
+
 
 /*
 -- R - READ
@@ -150,3 +158,7 @@ ORDER BY
 
 SELECT Id, Nome FROM Pessoa
 */
+
+SET NOCOUNT OFF;
+
+end

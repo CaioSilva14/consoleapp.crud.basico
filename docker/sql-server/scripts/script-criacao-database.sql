@@ -1,17 +1,25 @@
-create database geekjobs
+use master
 
 go
 
+if not exists(select 1 from sys.databases where name = 'geekjobs')
+begin
+
+create database geekjobs
+
+
+
+
 use geekjobs
 
-go 
+
 
 create table dbo.Estado (
 	Id int identity primary key not null,
 	Nome varchar(100) not null
 )
 
-go
+
 
 create table dbo.Cidade (
 	Id int identity primary key not null,
@@ -20,7 +28,7 @@ create table dbo.Cidade (
 	IdEstado int not null references dbo.Estado(id)
 )
 
-go
+
 
 create table dbo.Departamento (
 	Id int identity primary key not null,
@@ -28,11 +36,13 @@ create table dbo.Departamento (
 	IdCidade int not null references dbo.Cidade(id)
 )
 
-go
+
 
 create table dbo.Pessoa (
 	Id int identity primary key not null,
 	Nome varchar(50) not null,
 	IdDepartamento int not null references dbo.Departamento(id)
 )
+
+end
 
