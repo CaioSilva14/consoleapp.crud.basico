@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+using consoleapp.crud.basico.UI;
+
+Menu.ExibirMenu();
+Console.WriteLine("\n\nPrograma finalizado");
